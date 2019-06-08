@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 from PIL import Image #PIL库
 
-txtfile = open('**.txt', 'w') #用来存储字符的文件
-im = Image.open('**.jpg').convert("L") #打开.jpg文件，将其转换成灰度图
+txtfile = open('**.txt', 'w') #用来存储字符的文件，**替换成自己的文件名
+im = Image.open('**.jpg').convert("1") #打开.jpg文件，将其转换成黑白图
 HEIGHT = int(im.height) #获取图片的高度像素
 WIDTH = int(im.width) #获取图片的宽度像素
 print(HEIGHT, WIDTH)
-for h in range(HEIGHT):
+for h in range(HEIGHT): #遍历每一个像素
     txt = ''
     for w in range(WIDTH):
         pixel_value = im.getpixel((w,h)) #获取像素值
-        if pixel_value < 230:
+        if pixel_value == 0:
             txt += '0'
         else:
             txt += ' '
